@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Plus } from 'lucide-react'
 import { media } from '../media/mediaConfig'
 
@@ -11,45 +10,19 @@ const profiles = [
 ]
 
 export default function ProfileSelection({ onProfileClick }) {
-  const [introFinished, setIntroFinished] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIntroFinished(true), 800)
-    return () => clearTimeout(timer)
-  }, [])
-
   return (
     <div className="fixed inset-0 bg-black z-[1000] overflow-hidden">
-      {/* Netflix Intro Animation (Change 1e) */}
-      <AnimatePresence>
-        {!introFinished && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 z-[1001] bg-black flex items-center justify-center"
-          >
-             <motion.div 
-               initial={{ scale: 0.5, opacity: 0 }}
-               animate={{ scale: 1.2, opacity: 1 }}
-               transition={{ duration: 0.5, ease: "easeOut" }}
-               className="text-red-600 font-black text-6xl tracking-tighter"
-             >
-               N
-             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <motion.div
         initial={{ opacity: 0, scale: 1.1 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
         className="h-full w-full flex flex-col items-center justify-center"
       >
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
           className="text-white text-3xl sm:text-5xl font-bold mb-12 tracking-tight text-center"
         >
           Who's watching?
@@ -62,7 +35,7 @@ export default function ProfileSelection({ onProfileClick }) {
               onClick={profile.real ? onProfileClick : undefined}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.4 + (i * 0.1), duration: 0.5 }}
+              transition={{ delay: 0.6 + (i * 0.1), duration: 0.5 }}
               className={`flex flex-col items-center gap-3 group ${profile.real ? 'cursor-pointer' : 'cursor-default'}`}
             >
               <div
@@ -110,7 +83,7 @@ export default function ProfileSelection({ onProfileClick }) {
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 0.5 }}
+          transition={{ delay: 1.2, duration: 0.5 }}
           className="mt-16 px-8 py-2.5 border border-zinc-600 text-zinc-500 hover:text-white hover:border-white text-sm font-bold tracking-widest uppercase transition-all duration-300 rounded cursor-pointer"
         >
           Manage Profiles
