@@ -8,16 +8,15 @@ const NetflixIntro = ({ onComplete }) => {
       onComplete()
     }, 2600) // 2.6 seconds total
     return () => clearTimeout(timer)
-  }, [onComplete])
+  }, []) // Removed onComplete from dependencies to prevent accidental resets
 
   return (
     <motion.div
-      className="fixed inset-0 bg-black flex flex-col items-center justify-center z-[9999] cursor-pointer"
+      className="fixed inset-0 bg-black flex flex-col items-center justify-center z-[9999]"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, delay: 2.1 }} // fade out at the end
-      onClick={onComplete} // clicking anywhere skips the intro
     >
       {/* Red cinematic glow behind the N */}
       <motion.div
@@ -78,15 +77,6 @@ const NetflixIntro = ({ onComplete }) => {
         />
       </motion.div>
 
-      {/* Skip hint text */}
-      <motion.p
-        className="absolute bottom-12 text-zinc-600 text-sm"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-      >
-        Click anywhere to skip
-      </motion.p>
     </motion.div>
   )
 }
