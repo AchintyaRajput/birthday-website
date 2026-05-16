@@ -1,59 +1,67 @@
 import { motion } from 'framer-motion'
 import { Play, Info, Sparkles } from 'lucide-react'
-import heroBackground from '../assets/images/hero_background.png'
+import { media } from '../media/mediaConfig'
 
 export default function HeroSection({ onPlayClick }) {
   return (
-    <section className="relative w-full h-[85vh] min-h-[500px] overflow-hidden" id="hero-section">
-      {/* Background Image */}
+    <section className="relative w-full h-[85vh] min-h-[600px] overflow-hidden bg-black" id="hero-section">
+      {/* Background Image with Ken Burns Effect (Change 1b) */}
       <div className="absolute inset-0">
-        <img
-          src={heroBackground}
-          alt="Birthday celebration"
-          className="w-full h-full object-cover"
-        />
+        <motion.div
+          animate={{ scale: [1, 1.05] }}
+          transition={{ duration: 20, repeat: Infinity, repeatType: "alternate", ease: "easeInOut" }}
+          className="w-full h-full"
+        >
+          <img
+            src={media.hero.background}
+            alt="Birthday celebration"
+            className="w-full h-full object-cover opacity-80"
+          />
+        </motion.div>
       </div>
 
       {/* Dark gradient overlays */}
-      <div className="absolute inset-0 hero-gradient" />
-      <div className="absolute inset-0 hero-bottom-gradient" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-1" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-1" />
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <div
+      {/* Floating Particles/Confetti (Change 1b) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-2">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <motion.div
             key={i}
-            className="absolute particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              bottom: '-10px',
-              width: `${Math.random() * 4 + 2}px`,
-              height: `${Math.random() * 4 + 2}px`,
+            initial={{ y: "110%", x: `${Math.random() * 100}%`, opacity: 0 }}
+            animate={{ 
+              y: "-10%", 
+              opacity: [0, 0.6, 0],
+              x: `${(Math.random() * 100) + (Math.sin(i) * 5)}%` 
+            }}
+            transition={{ 
+              duration: 8 + Math.random() * 10, 
+              repeat: Infinity, 
+              delay: Math.random() * 5,
+              ease: "linear"
+            }}
+            className="absolute w-1.5 h-1.5 rounded-full"
+            style={{ 
               backgroundColor: i % 3 === 0 ? '#E50914' : i % 3 === 1 ? '#FFD700' : '#ffffff',
-              borderRadius: '50%',
-              animationDuration: `${Math.random() * 8 + 6}s`,
-              animationDelay: `${Math.random() * 5}s`,
-              opacity: 0,
+              boxShadow: '0 0 10px currentColor'
             }}
           />
         ))}
       </div>
 
       {/* Content */}
-      <div 
-        className="relative z-10 h-full w-full flex items-center"
-        style={{ paddingLeft: '4%', paddingRight: '4%' }}
-      >
-        <div className="max-w-[800px]">
+      <div className="relative z-10 h-full w-full flex items-center px-8 sm:px-20 lg:px-32">
+        <div className="max-w-[850px]">
           {/* Subtitle Tag */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="flex items-center gap-2 mb-4"
+            className="flex items-center gap-2 mb-6"
           >
-            <Sparkles className="w-4 h-4 text-[var(--color-red)]" />
-            <span className="text-[var(--color-text-secondary)] text-sm font-semibold tracking-widest uppercase">
+            <div className="w-8 h-[2px] bg-red-600" />
+            <span className="text-zinc-200 text-xs sm:text-sm font-bold tracking-[0.3em] uppercase">
               A Netflix Original Birthday
             </span>
           </motion.div>
@@ -62,13 +70,15 @@ export default function HeroSection({ onPlayClick }) {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.7 }}
-            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-tight mb-6 text-shadow-lg glow-red"
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black text-white leading-[0.9] mb-8 tracking-tighter"
           >
-            Happy Birthday
+            HAPPY
             <br />
-            <span className="bg-gradient-to-r from-[var(--color-red)] via-[#ff6b6b] to-[#FFD700] bg-clip-text text-transparent">
-              Samya
+            BIRTHDAY
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-red-400 to-yellow-500">
+              SAMYA
             </span>
           </motion.h1>
 
@@ -77,11 +87,9 @@ export default function HeroSection({ onPlayClick }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="text-[var(--color-text-secondary)] text-lg sm:text-xl leading-relaxed mb-6 max-w-2xl"
+            className="text-zinc-300 text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl drop-shadow-md"
           >
-            Today, we celebrate someone who makes every room brighter just by walking in. 
-            This is your story — the laughs, the memories, the unforgettable moments that 
-            make you the most incredible person we know. Welcome to your birthday universe. ✨
+            Witness the extraordinary life of the main character herself. From chaotic comedy to heartwarming drama, this is the story of someone who makes the world a lot more vibrant. Streaming only on her special day.
           </motion.p>
 
           {/* Metadata Tags */}
@@ -89,40 +97,38 @@ export default function HeroSection({ onPlayClick }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9, duration: 0.5 }}
-            className="flex items-center gap-2 text-[var(--color-text-muted)] text-sm mb-8"
+            className="flex items-center gap-3 text-zinc-400 text-sm mb-10 font-medium"
           >
-            <span className="text-green-400 font-semibold">98% Match</span>
-            <span>•</span>
+            <span className="text-green-500 font-bold">99% Match</span>
+            <span className="w-1 h-1 bg-zinc-600 rounded-full" />
             <span>2004</span>
-            <span>•</span>
-            <span>Heartwarming</span>
-            <span>•</span>
-            <span>Unforgettable</span>
-            <span>•</span>
-            <span className="border border-white/30 px-1.5 py-0.5 text-xs">U/A</span>
+            <span className="w-1 h-1 bg-zinc-600 rounded-full" />
+            <span className="border border-zinc-700 px-2 py-0.5 rounded-sm text-[10px] text-white">U/A 16+</span>
+            <span className="w-1 h-1 bg-zinc-600 rounded-full" />
+            <span>5 Seasons</span>
+            <span className="w-1 h-1 bg-zinc-600 rounded-full" />
+            <span className="flex items-center gap-1"><Sparkles size={14} className="text-yellow-500" /> Must Watch</span>
           </motion.div>
 
-          {/* Buttons */}
+          {/* Buttons (Change 1b) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.5 }}
-            className="flex flex-wrap items-center gap-3"
+            className="flex flex-wrap items-center gap-4"
           >
             <button
               onClick={onPlayClick}
-              id="hero-play-button"
-              className="flex items-center gap-2 bg-white text-black font-bold px-6 sm:px-8 py-2.5 sm:py-3 rounded-md text-base sm:text-lg hover:bg-white/80 transition-all duration-200 active:scale-95 cursor-pointer"
+              className="flex items-center gap-3 bg-white text-black font-bold px-8 py-3 rounded-md text-xl hover:bg-zinc-200 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
             >
-              <Play className="w-6 h-6 fill-black" />
+              <Play size={24} fill="black" />
               Play
             </button>
 
             <button
-              id="hero-more-info-button"
-              className="flex items-center gap-2 bg-[rgba(109,109,110,0.7)] text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-md text-base sm:text-lg hover:bg-[rgba(109,109,110,0.5)] transition-all duration-200 active:scale-95 cursor-pointer"
+              className="flex items-center gap-3 bg-zinc-500/40 text-white font-bold px-8 py-3 rounded-md text-xl backdrop-blur-md hover:bg-zinc-500/60 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
             >
-              <Info className="w-6 h-6" />
+              <Info size={24} />
               More Info
             </button>
           </motion.div>

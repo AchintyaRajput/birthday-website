@@ -1,108 +1,121 @@
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Plus } from 'lucide-react'
-import samyaProfile from '../assets/images/samya_profile.png'
+import { media } from '../media/mediaConfig'
 
 const profiles = [
-  { id: 1, name: 'Samya', photo: samyaProfile, real: true },
+  { id: 1, name: 'Samya', photo: media.profile.samya, real: true },
   { id: 2, name: 'Best Friend', color: '#E50914', emoji: '🎉', real: false },
   { id: 3, name: 'The Gang', color: '#2563EB', emoji: '🎂', real: false },
   { id: 4, name: 'Add Profile', isAdd: true, real: false },
 ]
 
 export default function ProfileSelection({ onProfileClick }) {
+  const [introFinished, setIntroFinished] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIntroFinished(true), 800)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, scale: 1.1 }}
-      transition={{ duration: 0.5 }}
-      className="fixed inset-0 bg-black flex flex-col items-center justify-center z-40"
-      id="profile-selection-view"
-    >
-      {/* Subtle animated background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(ellipse at 50% 50%, rgba(229,9,20,0.03) 0%, transparent 70%)',
-          }}
-        />
-      </div>
-
-      {/* Content */}
-      <motion.h1
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-white text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center relative z-10"
-      >
-        Who's watching?
-      </motion.h1>
-
-      {/* Profile Cards Row */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.5 }}
-        className="flex items-start justify-center gap-4 sm:gap-6 flex-wrap relative z-10 px-4"
-      >
-        {profiles.map((profile) => (
-          <motion.button
-            key={profile.id}
-            onClick={profile.real ? onProfileClick : undefined}
-            className={`flex flex-col items-center gap-2 group ${profile.real ? 'cursor-pointer' : 'cursor-default'}`}
-            whileHover={profile.real ? { scale: 1.08 } : {}}
-            whileTap={profile.real ? { scale: 0.98 } : {}}
+    <div className="fixed inset-0 bg-black z-[1000] overflow-hidden">
+      {/* Netflix Intro Animation (Change 1e) */}
+      <AnimatePresence>
+        {!introFinished && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 z-[1001] bg-black flex items-center justify-center"
           >
-            <div
-              className={`w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] rounded-md overflow-hidden transition-all duration-200 ${
-                profile.real
-                  ? 'group-hover:ring-2 group-hover:ring-white'
-                  : 'group-hover:ring-2 group-hover:ring-white/30'
-              }`}
-            >
-              {profile.isAdd ? (
-                /* Add Profile Card */
-                <div className="w-full h-full bg-[#2d2d2d] flex items-center justify-center">
-                  <Plus className="w-12 h-12 sm:w-16 sm:h-16 text-[var(--color-text-muted)] group-hover:text-white transition-colors" />
-                </div>
-              ) : profile.photo ? (
-                /* Samya's real photo */
-                <img
-                  src={profile.photo}
-                  alt={profile.name}
-                  className="w-full h-full object-cover group-hover:scale-[1.08] transition-transform duration-300"
-                />
-              ) : (
-                /* Dummy colored avatar with emoji */
-                <div
-                  className="w-full h-full flex items-center justify-center"
-                  style={{ backgroundColor: profile.color }}
-                >
-                  <span className="text-4xl sm:text-5xl">{profile.emoji}</span>
-                </div>
-              )}
-            </div>
-            <span className={`text-sm text-center transition-colors duration-200 ${
-              profile.real
-                ? 'text-[var(--color-text-secondary)] group-hover:text-white font-medium'
-                : 'text-[var(--color-text-muted)] group-hover:text-[var(--color-text-secondary)]'
-            }`}>
-              {profile.name}
-            </span>
-          </motion.button>
-        ))}
-      </motion.div>
+             <motion.div 
+               initial={{ scale: 0.5, opacity: 0 }}
+               animate={{ scale: 1.2, opacity: 1 }}
+               transition={{ duration: 0.5, ease: "easeOut" }}
+               className="text-red-600 font-black text-6xl tracking-tighter"
+             >
+               N
+             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Manage Profiles button (decorative) */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.4 }}
-        className="mt-10 sm:mt-12 px-6 py-2 border border-[var(--color-text-muted)] text-[var(--color-text-muted)] hover:text-white hover:border-white text-sm font-medium tracking-wider uppercase transition-all duration-200 relative z-10 cursor-pointer rounded"
+      <motion.div
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+        className="h-full w-full flex flex-col items-center justify-center"
       >
-        Manage Profiles
-      </motion.button>
-    </motion.div>
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.5 }}
+          className="text-white text-3xl sm:text-5xl font-bold mb-12 tracking-tight text-center"
+        >
+          Who's watching?
+        </motion.h1>
+
+        <div className="flex flex-wrap items-start justify-center gap-6 sm:gap-8 px-4">
+          {profiles.map((profile, i) => (
+            <motion.button
+              key={profile.id}
+              onClick={profile.real ? onProfileClick : undefined}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.4 + (i * 0.1), duration: 0.5 }}
+              className={`flex flex-col items-center gap-3 group ${profile.real ? 'cursor-pointer' : 'cursor-default'}`}
+            >
+              <div
+                className={`w-[120px] h-[120px] sm:w-[170px] sm:h-[170px] rounded-md overflow-hidden relative transition-all duration-300 border-2 border-transparent ${
+                  profile.real
+                    ? 'group-hover:border-white group-hover:scale-105 shadow-2xl'
+                    : 'opacity-50 group-hover:opacity-70'
+                }`}
+              >
+                {profile.isAdd ? (
+                  <div className="w-full h-full bg-[#18181b] flex items-center justify-center">
+                    <Plus className="w-16 h-16 text-zinc-600 group-hover:text-zinc-200 transition-colors" />
+                  </div>
+                ) : profile.photo ? (
+                  <img
+                    src={profile.photo}
+                    alt={profile.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div
+                    className="w-full h-full flex items-center justify-center"
+                    style={{ backgroundColor: profile.color }}
+                  >
+                    <span className="text-5xl">{profile.emoji}</span>
+                  </div>
+                )}
+                
+                {/* Overlay on hover */}
+                {profile.real && (
+                  <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                )}
+              </div>
+              <span className={`text-sm sm:text-base transition-colors duration-300 ${
+                profile.real
+                  ? 'text-zinc-400 group-hover:text-white font-medium'
+                  : 'text-zinc-500'
+              }`}>
+                {profile.name}
+              </span>
+            </motion.button>
+          ))}
+        </div>
+
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 0.5 }}
+          className="mt-16 px-8 py-2.5 border border-zinc-600 text-zinc-500 hover:text-white hover:border-white text-sm font-bold tracking-widest uppercase transition-all duration-300 rounded cursor-pointer"
+        >
+          Manage Profiles
+        </motion.button>
+      </motion.div>
+    </div>
   )
 }
