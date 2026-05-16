@@ -41,7 +41,7 @@ export default function ComplimentsPage({ likedCards, onToggleLike }) {
       {/* Page Header */}
       <div 
         className="pb-12"
-        style={{ paddingTop: '280px', paddingLeft: '8%', paddingRight: '8%' }}
+        style={{ paddingTop: '180px', paddingLeft: '8%', paddingRight: '8%' }}
       >
         <motion.div
           initial={{ opacity: 0, x: -20 }}
