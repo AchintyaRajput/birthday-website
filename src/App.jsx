@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import ProfileSelection from './views/ProfileSelection'
 import HomeDashboard from './views/HomeDashboard'
