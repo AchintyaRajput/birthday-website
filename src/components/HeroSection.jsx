@@ -51,7 +51,10 @@ export default function HeroSection({ onPlayClick }) {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full w-full flex items-center px-8 sm:px-20 lg:px-32">
+      <div 
+        className="relative z-10 h-full w-full flex items-center"
+        style={{ paddingLeft: '8%', paddingRight: '8%' }}
+      >
         <div className="max-w-[850px]">
           {/* Subtitle Tag */}
           <motion.div

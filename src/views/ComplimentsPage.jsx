@@ -40,7 +40,8 @@ export default function ComplimentsPage({ likedCards, onToggleLike }) {
 
       {/* Page Header */}
       <div 
-        className="pb-12 pt-[220px] px-8 sm:px-16 lg:px-24"
+        className="pb-12"
+        style={{ paddingTop: '280px', paddingLeft: '8%', paddingRight: '8%' }}
       >
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -61,7 +62,10 @@ export default function ComplimentsPage({ likedCards, onToggleLike }) {
       </div>
 
       {/* Card Grid */}
-      <div className="px-8 sm:px-16 lg:px-24 pb-24">
+      <div 
+        className="pb-24"
+        style={{ paddingLeft: '8%', paddingRight: '8%' }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {compliments.map((compliment, index) => (
             <motion.div
@@ -86,7 +90,8 @@ export default function ComplimentsPage({ likedCards, onToggleLike }) {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="pb-24 px-8 sm:px-16 lg:px-24 text-center"
+        className="pb-24 text-center"
+        style={{ paddingLeft: '8%', paddingRight: '8%' }}
       >
         <div className="inline-flex items-center gap-6 bg-zinc-900 border border-zinc-800 rounded-2xl px-8 py-6 shadow-2xl">
           <div className="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(229,9,20,0.4)]">
