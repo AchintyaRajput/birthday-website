@@ -6,7 +6,7 @@ const NetflixIntro = ({ onComplete }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onComplete()
-    }, 2600) // 2.6 seconds total
+    }, 2200) // Trigger transition right as N disappears
     return () => clearTimeout(timer)
   }, []) // Removed onComplete from dependencies to prevent accidental resets
 
@@ -16,7 +16,7 @@ const NetflixIntro = ({ onComplete }) => {
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5, delay: 2.1 }} // fade out at the end
+      transition={{ duration: 0.5 }} // removed delay so exit is instant
     >
       {/* Red cinematic glow behind the N */}
       <motion.div
