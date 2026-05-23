@@ -12,7 +12,7 @@ import samyaPhoto from '../../samya/s7.jpeg'
 import heroBg from '../../samya/herobg.jpeg'
 
 // ── VIDEO ────────────────────────────────────
-import birthdayReel from '../../samya/vid.mp4'
+import birthdayReel from '../../samya/vid2.mp4'
 
 // ── SWEET MEMORIES ROW ───────────────────────
 import cafeDays from '../../samya/s16.jpeg'
