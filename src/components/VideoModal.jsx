@@ -15,6 +15,7 @@ export default function VideoModal({ onClose }) {
   const [volume, setVolume] = useState(1)
   const [isMuted, setIsMuted] = useState(false)
   const [showControls, setShowControls] = useState(true)
+  const [zoom, setZoom] = useState(1.2) // Default to 120% zoom as a middle ground
   const hideTimer = useRef(null)
 
   const handleMouseMove = () => {
@@ -70,9 +71,19 @@ export default function VideoModal({ onClose }) {
         e.preventDefault()
         setVolume(prev => Math.max(prev - 0.1, 0))
         break
+      case '=':
+      case '+':
+        e.preventDefault()
+        setZoom(prev => Math.min(prev + 0.05, 2.5))
+        break
+      case '-':
+      case '_':
+        e.preventDefault()
+        setZoom(prev => Math.max(prev - 0.05, 0.5))
+        break
       default: break
     }
-  }, [togglePlay, skip, onClose, toggleFullscreen, toggleMute])
+  }, [togglePlay, skip, onClose, toggleFullscreen, toggleMute, zoom])
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown)
@@ -118,7 +129,8 @@ export default function VideoModal({ onClose }) {
       <video
         ref={videoRef}
         src={media.video.birthdayReel}
-        className="absolute inset-0 w-full h-full object-contain"
+        className="absolute inset-0 w-full h-full object-contain transition-transform duration-200 ease-out"
+        style={{ transform: `scale(${zoom})` }}
         autoPlay
         onTimeUpdate={onTimeUpdate}
         onLoadedMetadata={onLoadedMetadata}
@@ -203,9 +215,25 @@ export default function VideoModal({ onClose }) {
             </div>
 
             <div className="flex items-center gap-6 sm:gap-8">
-              <button className="opacity-60 hover:opacity-100 transition cursor-pointer"><LayoutGrid size={24} /></button>
-              <button className="opacity-60 hover:opacity-100 transition cursor-pointer"><MessageSquare size={24} /></button>
-              <button className="opacity-60 hover:opacity-100 transition cursor-pointer"><Gauge size={24} /></button>
+              <div className="flex items-center gap-2 bg-zinc-800/60 rounded-lg p-1.5 px-3 border border-zinc-700/50">
+                <button 
+                  onClick={() => setZoom(z => Math.max(z - 0.05, 0.5))} 
+                  className="hover:text-red-500 transition cursor-pointer text-zinc-400"
+                  title="Zoom Out (-)"
+                >
+                  <Minus size={18} />
+                </button>
+                <span className="text-xs font-semibold w-12 text-center select-none text-zinc-300">
+                  {Math.round(zoom * 100)}%
+                </span>
+                <button 
+                  onClick={() => setZoom(z => Math.min(z + 0.05, 2.5))} 
+                  className="hover:text-red-500 transition cursor-pointer text-zinc-400"
+                  title="Zoom In (+)"
+                >
+                  <Plus size={18} />
+                </button>
+              </div>
               <button onClick={toggleFullscreen} className="hover:scale-110 transition cursor-pointer"><Maximize size={28} /></button>
             </div>
           </div>
