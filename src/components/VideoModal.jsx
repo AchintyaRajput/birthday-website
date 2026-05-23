@@ -15,7 +15,7 @@ export default function VideoModal({ onClose }) {
   const [volume, setVolume] = useState(1)
   const [isMuted, setIsMuted] = useState(false)
   const [showControls, setShowControls] = useState(true)
-  const [zoom, setZoom] = useState(2.0) // Default to 200% zoom
+  const [zoom, setZoom] = useState(1.0) // Default to 100% zoom
   const hideTimer = useRef(null)
 
   const handleMouseMove = () => {
