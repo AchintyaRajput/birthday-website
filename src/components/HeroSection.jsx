@@ -104,11 +104,11 @@ export default function HeroSection({ onPlayClick }) {
           >
             <span className="text-green-500 font-bold">99% Match</span>
             <span className="w-1 h-1 bg-zinc-600 rounded-full" />
-            <span>2004</span>
+            <span>2006</span>
             <span className="w-1 h-1 bg-zinc-600 rounded-full" />
             <span className="border border-zinc-700 px-2 py-0.5 rounded-sm text-[10px] text-white">U/A 16+</span>
             <span className="w-1 h-1 bg-zinc-600 rounded-full" />
-            <span>5 Seasons</span>
+            <span>2 Seasons</span>
             <span className="w-1 h-1 bg-zinc-600 rounded-full" />
             <span className="flex items-center gap-1"><Sparkles size={14} className="text-yellow-500" /> Must Watch</span>
           </motion.div>

@@ -113,12 +113,12 @@ export default function VideoModal({ onClose }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onMouseMove={handleMouseMove}
-      className="fixed inset-0 z-[9999] bg-black w-screen h-screen overflow-hidden flex items-center justify-center"
+      className="fixed inset-0 z-[9999] bg-black w-screen h-screen overflow-hidden"
     >
       <video
         ref={videoRef}
         src={media.video.birthdayReel}
-        className="w-full h-full object-contain"
+        className="absolute inset-0 w-full h-full object-contain"
         autoPlay
         onTimeUpdate={onTimeUpdate}
         onLoadedMetadata={onLoadedMetadata}

@@ -3,7 +3,7 @@ import { Plus } from 'lucide-react'
 import { media } from '../media/mediaConfig'
 
 const profiles = [
-  { id: 1, name: 'Samya', photo: media.profile.samya, real: true },
+  { id: 1, name: 'Basanti', photo: media.profile.samya, real: true },
   { id: 2, name: 'Best Friend', color: '#E50914', emoji: '🎉', real: false },
   { id: 3, name: 'The Gang', color: '#2563EB', emoji: '🎂', real: false },
   { id: 4, name: 'Add Profile', isAdd: true, real: false },

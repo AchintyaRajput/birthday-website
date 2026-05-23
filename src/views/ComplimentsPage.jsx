@@ -102,7 +102,7 @@ export default function ComplimentsPage({ likedCards, onToggleLike }) {
               100% FRESH ON TOMATOES
             </p>
             <p className="text-zinc-400 font-medium">
-              Samya is officially the highest-rated friend of 2024.
+              Samya is officially the highest-rated friend of 2026.
             </p>
           </div>
         </div>

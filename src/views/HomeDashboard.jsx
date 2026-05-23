@@ -7,9 +7,8 @@ export default function HomeDashboard({ onPlayClick }) {
   // Map mediaConfig rows to the format ContentRow expects
   const rows = [
     { title: 'Sweet Memories', cards: media.rows.sweetMemories },
-    { title: 'Drama Reel', cards: media.rows.drama },
-    { title: 'Comedy Specials', cards: media.rows.comedy },
-    { title: 'Unforgettable Moments', cards: media.rows.moments },
+    { title: 'Better Together', cards: media.rows.drama },
+    { title: 'Samya Special', cards: media.rows.comedy },
   ]
 
   return (
