@@ -1,26 +1,26 @@
 export const compliments = [
   {
     id: 1,
-    friendName: 'Aarav',
-    text: "Samya, you're the kind of person who walks into a room and suddenly everyone's laughing. Your energy is genuinely magnetic — you don't even try, it just happens. Never change, birthday queen. 👑",
+    friendName: ' XOXO Devashree❤️',
+    text: "Wish you a very happy birthday Samya🎂🤗🥳 Hope this new chapter of your life brings you abundance of happiness and good health and of course as a fellow Agatha Christie fan I hope you also find your own little thrill.😎🤠  Not sure how but I find myself being fully supportive of this little 'red hoodie search gang' hope it proves successful soon.😌😌🍀Everything about you screams confidence and in the best way possible, as it empowers your charm which is quite lethal by the way... Cause God bless 🫣🫡you looked beyond beautiful in that college fest🥵😍😍 I am still recovering🍀 I would also love to have a one on one with you someday discussing some of our favorite works cause I believe Agatha might just be the tip of the iceberg we might just have a lot more in common🫶🫶",
     stars: 5,
   },
   {
     id: 2,
-    friendName: 'Priya',
-    text: "There's no one else I'd rather stay up until 3 AM overthinking life with. You listen like you actually care (because you do), and that's the rarest thing in the world. Love you endlessly. 💛",
+    friendName: 'Pratyaksha',
+    text: "Happy birthday Samyaa! It’s actually funny because we’ve barely met that many times but somehow you still feel familiar.. You’re genuinely one of those ppl who carry so much grace w/o even trying.. and idk how to explain it but your presence is just very warm and easy to be around.. talking to you never feels forced or awk.. You somehow make everything more fun.. also, you give very “has her life together” wala vibe while still being chaotic enough to make people laugh.. I hope this year gives you everything that matches your heart.. good people, good memories, peace, attention, drama free happiness and all the little things that make life feel exciting.. Stay exactly the way you are cuz it suits you way too well.. btw I still remember you feeding me from your spoon when we had literally just met, considering you never do that with people, I highkey felt honoured.. Love youu!! Happy birthday once again 💗💗🫶🏻",
     stars: 5,
   },
   {
     id: 3,
-    friendName: 'Rohan',
-    text: "Every group needs a Samya, and we got the original. The memes, the spontaneous plans, the emotional support at 2 AM — you do it all without expecting anything back. 10/10, would befriend again.",
+    friendName: 'shagun',
+    text: "You are the cutest, smartest and sweetest person I've ever met(also have a good taste).I love how you laugh at my worst joke like it's the best one ,how we always make the same mistakes unknowingly and how you just gets me..Tho you obviously know ki m sirf aapko pyaar krti hu...aap meri ek lauti si ho✨💋💋 I love you very much meri BASANTI🫶",
     stars: 5,
   },
   {
     id: 4,
-    friendName: 'Ananya',
-    text: "You taught me that it's okay to be soft and strong at the same time. Watching you handle life with so much grace while still being the funniest person in the room? Iconic behaviour. Happy birthday, love. 🌸",
+    friendName: 'Kritika',
+    text: "You make college bearable and beautiful, Thankyou for being you!<3",
     stars: 5,
   },
   {
